@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A magical birthday website for Dr. Sharmin Zaman Momo 🌸" />
+  <title>Happy Birthday MoMo 🌸</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================
+       RESET & CUSTOM PROPERTIES
+    ============================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sage:          #8fbc8f;
+      --sage-light:    #c8e6c8;
+      --sage-dark:     #4a8a5a;
+      --sky:           #87ceeb;
+      --sky-light:     #d4eef8;
+      --peach:         #ffcba4;
+      --peach-light:   #ffe8d6;
+      --cloud:         #f8f5f0;
+      --yellow:        #ffd166;
+      --gold:          #f4a261;
+      --pink:          #f9c6d0;
+      --lavender:      #d4b8e0;
+      --text-dark:     #2d2018;
+      --text-mid:      #5e3f2e;
+      --text-light:    #9b7e6e;
+      --glass-bg:      rgba(255,255,255,0.28);
+      --glass-border:  rgba(255,255,255,0.55);
+      --shadow:        0 8px 32px rgba(100,150,100,0.18);
+      --r-lg:          20px;
+      --r-xl:          36px;
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cloud);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      line-height: 1.65;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 7px; }
+    ::-webkit-scrollbar-track { background: var(--sky-light); }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(var(--sage), var(--peach)); border-radius: 4px; }
+
+    /* ============================================
+       NAVIGATION
+    ============================================ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 14px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(248,245,240,0.78);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow: 0 2px 24px rgba(143,188,143,0.12);
+      transition: background 0.4s;
+    }
+
+    .nav-logo {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.7rem; color: var(--sage-dark);
+      text-decoration: none; letter-spacing: 0.01em;
+    }
+
+    .nav-links { display: flex; gap: 6px; list-style: none; }
+
+    .nav-links a {
+      display: flex; align-items: center; gap: 5px;
+      padding: 9px 20px; border-radius: 50px;
+      text-decoration: none; font-size: 0.88rem;
+      font-weight: 700; color: var(--text-mid);
+      transition: all 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      background: linear-gradient(135deg, var(--sage-light), var(--sky-light));
+      color: var(--sage-dark); box-shadow: var(--shadow);
+    }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 25px; height: 2.5px;
+      background: var(--sage-dark); border-radius: 3px; transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+    .mobile-nav {
+      display: none; position: fixed; top: 62px; left: 0; right: 0; z-index: 999;
+      background: rgba(248,245,240,0.96); backdrop-filter: blur(20px);
+      padding: 14px 20px 20px; border-bottom: 1px solid var(--glass-border);
+      flex-direction: column; gap: 8px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      padding: 13px 20px; border-radius: 14px;
+      text-decoration: none; font-weight: 700; color: var(--text-mid);
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      transition: all 0.3s; font-size: 1rem;
+    }
+    .mobile-nav a:hover { background: var(--sage-light); color: var(--sage-dark); }
+
+    /* ============================================
+       SHARED SECTION STYLES
+    ============================================ */
+    section { position: relative; overflow: hidden; padding: 110px 0 70px; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .eyebrow {
+      display: inline-block; font-family: 'Dancing Script', cursive;
+      font-size: 1.45rem; color: var(--gold); margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+      font-weight: 700; color: var(--text-dark);
+      line-height: 1.22; margin-bottom: 14px;
+    }
+    .section-subtitle { font-size: 1.05rem; color: var(--text-light); max-width: 480px; margin: 0 auto; }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.85s ease, transform 0.85s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.08s; } .d2 { transition-delay: 0.18s; }
+    .d3 { transition-delay: 0.28s; } .d4 { transition-delay: 0.38s; }
+    .d5 { transition-delay: 0.48s; } .d6 { transition-delay: 0.58s; }
+
+    /* ============================================
+       SECTION 1 — WELCOME & MAGIC
+    ============================================ */
+    #home {
+      min-height: 100vh;
+      background: linear-gradient(152deg,
+        #cce8f4 0%, #c4dfc4 20%, #e8f5e9 38%,
+        #ffe8d6 62%, #fce4ec 82%, #ede0f7 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+    }
+
+    /* Particle layers */
+    .particle-layer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+
+    /* Orb */
+    .orb {
+      position: absolute; border-radius: 50%; opacity: 0;
+      animation: orbRise linear infinite;
+    }
+    @keyframes orbRise {
+      0%   { transform: translateY(105vh) translateX(0) scale(0.4); opacity: 0; }
+      8%   { opacity: 0.9; }
+      92%  { opacity: 0.7; }
+      100% { transform: translateY(-80px) translateX(50px) scale(1.3); opacity: 0; }
+    }
+
+    /* Sparkle */
+    .sparkle {
+      position: absolute; width: 8px; height: 8px;
+      animation: sparkleAnim ease-in-out infinite;
+    }
+    .sparkle::before, .sparkle::after {
+      content: ''; position: absolute; border-radius: 2px;
+    }
+    .sparkle::before { width: 8px; height: 2px; top: 3px; left: 0; }
+    .sparkle::after  { width: 2px; height: 8px; top: 0; left: 3px; }
+    @keyframes sparkleAnim {
+      0%,100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+      50%     { opacity: 1; transform: scale(1.3) rotate(45deg); }
+    }
+
+    /* Petal */
+    .petal {
+      position: absolute; opacity: 0;
+      animation: petalFall linear infinite;
+      border-radius: 50% 0 50% 0;
+    }
+    @keyframes petalFall {
+      0%   { transform: translateY(-30px) rotate(0deg); opacity: 0; }
+      8%   { opacity: 0.85; }
+      92%  { opacity: 0.5; }
+      100% { transform: translateY(108vh) rotate(800deg); opacity: 0; }
+    }
+
+    /* Hero content */
+    .hero-content { position: relative; z-index: 10; max-width: 860px; padding: 0 20px; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 22px; border-radius: 50px;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(12px);
+      font-size: 0.88rem; font-weight: 700; color: var(--sage-dark);
+      letter-spacing: 0.06em; box-shadow: var(--shadow); margin-bottom: 28px;
+    }
+    .hero-badge .pulse { animation: pulse 1.6s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.25)} }
+
+    .hero-pre {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.1rem,2.5vw,1.6rem);
+      color: var(--text-mid); margin-bottom: 12px;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem,4vw,2.6rem);
+      font-style: italic; margin-bottom: 14px;
+    }
+    .hero-name strong {
+      font-style: normal;
+      background: linear-gradient(120deg, var(--sage-dark) 0%, var(--gold) 60%, #c0447a 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem,7vw,5.2rem);
+      font-weight: 700; line-height: 1.12; margin-bottom: 22px;
+      background: linear-gradient(135deg, #3a7a50 0%, var(--gold) 45%, #c0447a 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .hero-welcome {
+      font-size: clamp(1rem,2.2vw,1.2rem);
+      color: var(--text-mid); max-width: 580px;
+      margin: 0 auto 42px; line-height: 1.85;
+    }
+
+    /* Candles */
+    .candles-row {
+      display: flex; align-items: flex-end; justify-content: center;
+      gap: 18px; margin: 36px 0 20px;
+    }
+    .candle-wrap {
+      display: flex; flex-direction: column; align-items: center;
+      animation: candleFloat 3s ease-in-out infinite;
+    }
+    .candle-wrap:nth-child(2) { animation-delay: .4s; }
+    .candle-wrap:nth-child(3) { animation-delay: .8s; }
+    .candle-wrap:nth-child(4) { animation-delay: .6s; }
+    .candle-wrap:nth-child(5) { animation-delay: 1.2s; }
+    .candle-wrap:nth-child(6) { animation-delay: .2s; }
+    .candle-wrap:nth-child(7) { animation-delay: 1s; }
+    @keyframes candleFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+
+    .flame {
+      border-radius: 50% 50% 30% 30% / 60% 60% 40% 40%;
+      animation: flicker 0.12s ease-in-out infinite alternate;
+      position: relative;
+    }
+    @keyframes flicker {
+      0%   { transform: scaleX(1)    scaleY(1)    rotate(-2deg); filter: brightness(1); }
+      100% { transform: scaleX(0.82) scaleY(1.12) rotate(2deg);  filter: brightness(1.15); }
+    }
+    .flame::after {
+      content: ''; position: absolute; bottom: -3px; left: 50%;
+      transform: translateX(-50%); width: 5px; height: 5px;
+      background: #2d1a0e; border-radius: 50%;
+    }
+
+    .candle-body {
+      border-radius: 5px 5px 3px 3px; position: relative; overflow: hidden;
+    }
+    .candle-drip {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 7px; border-radius: 0 0 50% 50%; opacity: 0.65;
+    }
+
+    .make-wish {
+      font-size: .9rem; color: var(--text-light); font-style: italic;
+      margin-top: 10px;
+    }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: relative; z-index: 10; margin-top: 48px;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 6px; color: var(--text-light); font-size: .82rem;
+      animation: scrollBounce 2.2s ease-in-out infinite;
+    }
+    @keyframes scrollBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(9px)} }
+    .scroll-cue svg { width: 22px; height: 22px; opacity: .55; }
+
+    /* ============================================
+       WAVE DIVIDER
+    ============================================ */
+    .wave { width: 100%; overflow: hidden; line-height: 0; }
+    .wave svg { display: block; width: 100%; }
+
+    /* ============================================
+       SECTION 2 — WHY YOU'RE SPECIAL
+    ============================================ */
+    #about {
+      background: linear-gradient(168deg,
+        #edf7ed 0%, #e4f3ff 30%, #fff8f2 65%, #fdeef4 100%);
+    }
+
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+    }
+
+    /* Image frame */
+    .img-frame { position: relative; }
+
+    .img-frame-inner {
+      border-radius: var(--r-xl); overflow: hidden;
+      box-shadow:
+        0 0 0 5px rgba(255,255,255,0.9),
+        0 0 0 10px rgba(143,188,143,0.25),
+        0 24px 64px rgba(0,0,0,0.1);
+      animation: glowPulse 4s ease-in-out infinite alternate;
+    }
+    @keyframes glowPulse {
+      0%   { box-shadow: 0 0 0 5px rgba(255,255,255,.9), 0 0 0 10px rgba(143,188,143,.25), 0 24px 64px rgba(0,0,0,.1), 0 0 40px rgba(143,188,143,.15); }
+      100% { box-shadow: 0 0 0 5px rgba(255,255,255,.95),0 0 0 10px rgba(255,210,100,.35), 0 24px 64px rgba(0,0,0,.13), 0 0 60px rgba(255,210,100,.25); }
+    }
+
+    /* INSERT GHIBLI IMAGE HERE */
+    .img-frame-inner img {
+      width: 100%; height: 540px;
+      object-fit: cover; object-position: top center;
+      display: block;
+    }
+    .img-frame-inner::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 55%, rgba(100,160,100,.12) 100%);
+      pointer-events: none;
+    }
+
+    /* Corner flowers */
+    .corner { position: absolute; width: 64px; height: 64px; pointer-events: none; }
+    .corner.tl { top: -12px; left: -12px; }
+    .corner.tr { top: -12px; right: -12px; transform: scaleX(-1); }
+    .corner.bl { bottom: -12px; left: -12px; transform: scaleY(-1); }
+    .corner.br { bottom: -12px; right: -12px; transform: scale(-1,-1); }
+
+    /* Trait cards */
+    .traits { display: flex; flex-direction: column; gap: 22px; }
+
+    .trait-card {
+      background: var(--glass-bg); backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--r-lg); padding: 26px 28px;
+      box-shadow: var(--shadow);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .trait-card:hover { transform: translateY(-5px); box-shadow: 0 20px 52px rgba(100,150,100,.22); }
+
+    .trait-icon { font-size: 2.1rem; margin-bottom: 10px; }
+    .trait-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.18rem; font-weight: 600;
+      color: var(--text-dark); margin-bottom: 8px;
+    }
+    .trait-text { font-size: .95rem; color: var(--text-mid); line-height: 1.75; }
+
+    /* ============================================
+       SECTION 3 — WISHES & HEARTS
+    ============================================ */
+    #wishes {
+      background: linear-gradient(148deg,
+        #fce4ec 0%, #f3e5f5 28%, #e8f5e9 60%, #e3f2fd 100%);
+    }
+
+    .floating-heart {
+      position: absolute; animation: heartRise linear infinite;
+      pointer-events: none; user-select: none;
+    }
+    @keyframes heartRise {
+      0%   { transform: translateY(0) rotate(0deg) scale(.7); opacity: 0; }
+      8%   { opacity: 1; }
+      92%  { opacity: .55; }
+      100% { transform: translateY(-115vh) rotate(360deg) scale(1.2); opacity: 0; }
+    }
+
+    .wishes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px; margin-bottom: 70px;
+    }
+
+    .wish-card {
+      background: var(--glass-bg); backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--r-lg); padding: 32px 26px;
+      box-shadow: var(--shadow); text-align: center;
+      position: relative; overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .wish-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--sage), var(--peach), var(--lavender), var(--sky));
+    }
+    .wish-card:hover { transform: translateY(-8px) rotate(.4deg); box-shadow: 0 26px 64px rgba(100,150,100,.28); }
+
+    .wish-emoji { font-size: 2.6rem; display: block; margin-bottom: 16px; animation: emojiBounce 2s ease-in-out infinite; }
+    @keyframes emojiBounce { 0%,100%{transform:scale(1)} 50%{transform:scale(1.12)} }
+
+    .wish-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.02rem; color: var(--text-dark);
+      line-height: 1.85; font-style: italic; margin-bottom: 18px;
+    }
+
+    .wish-footer { font-size: .82rem; color: var(--text-light); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+
+    .beat { display: inline-block; color: #e91e8c; animation: beatHeart 1.1s ease-in-out infinite; }
+    .beat.b2 { animation-delay: .12s; }
+    .beat.b3 { animation-delay: .24s; }
+    @keyframes beatHeart { 0%,100%{transform:scale(1)} 14%{transform:scale(1.35)} 28%{transform:scale(1)} 42%{transform:scale(1.35)} 70%{transform:scale(1)} }
+
+    /* Final message */
+    .final-msg {
+      text-align: center; max-width: 720px; margin: 0 auto;
+      padding: 0 20px 40px; position: relative; z-index: 2;
+    }
+    .final-msg-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2rem,4.5vw,3.2rem);
+      color: var(--sage-dark); margin-bottom: 22px;
+    }
+    .final-msg-text { font-size: 1.08rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 20px; }
+    .final-sig { font-family: 'Dancing Script', cursive; font-size: 1.9rem; color: var(--gold); margin-top: 6px; }
+
+    .celebrate-btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 17px 40px; border-radius: 50px;
+      background: linear-gradient(135deg, var(--sage) 0%, #5bafd6 100%);
+      color: #fff; border: none; cursor: pointer;
+      font-family: 'Lato', sans-serif; font-size: 1.02rem; font-weight: 700;
+      box-shadow: 0 10px 30px rgba(100,160,100,.4);
+      transition: all 0.3s; letter-spacing: .04em; margin-top: 32px;
+    }
+    .celebrate-btn:hover { transform: translateY(-4px) scale(1.04); box-shadow: 0 18px 44px rgba(100,160,100,.5); }
+    .celebrate-btn:active { transform: translateY(0) scale(.98); }
+
+    /* Confetti particle */
+    .confetti-p {
+      position: fixed; pointer-events: none; border-radius: 3px;
+      animation: confettiFall linear forwards; z-index: 9999;
+    }
+    @keyframes confettiFall {
+      0%   { transform: translateY(-10px) rotate(0deg);   opacity: 1; }
+      100% { transform: translateY(100vh) rotate(800deg); opacity: 0; }
+    }
+
+    /* ============================================
+       FOOTER
+    ============================================ */
+    footer {
+      background: rgba(45,32,24,.05); text-align: center;
+      padding: 26px; color: var(--text-light); font-size: .85rem;
+      border-top: 1px solid var(--glass-border);
+    }
+    footer strong { color: var(--sage-dark); }
+
+    /* ============================================
+       RESPONSIVE
+    ============================================ */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .img-frame-inner img { height: 370px; }
+
+      section { padding: 86px 0 50px; }
+      .candles-row { gap: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content { padding: 0 16px; }
+      .candle-body  { height: 40px !important; }
+      .flame        { width: 11px !important; height: 17px !important; }
+      .wishes-grid  { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================
+       NAVIGATION
+  ================================================ -->
+  <nav id="navbar" aria-label="Main navigation">
+    <a href="#home" class="nav-logo">🌸 MoMo</a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#home" class="active">✨ Magic</a></li>
+      <li><a href="#about">🌿 Her Story</a></li>
+      <li><a href="#wishes">💌 Wishes</a></li>
+    </ul>
+
+    <button class="hamburger" id="ham" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <a href="#home"   onclick="closeMob()">✨ Magic &amp; Welcome</a>
+    <a href="#about"  onclick="closeMob()">🌿 Her Story</a>
+    <a href="#wishes" onclick="closeMob()">💌 Birthday Wishes</a>
+  </nav>
+
+  <!-- ================================================
+       SECTION 1 — WELCOME & MAGIC
+  ================================================ -->
+  <section id="home">
+    <div class="particle-layer" id="orbLayer"     aria-hidden="true"></div>
+    <div class="particle-layer" id="sparkLayer"   aria-hidden="true"></div>
+    <div class="particle-layer" id="petalLayer"   aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <!-- Badge -->
+      <div class="hero-badge reveal">
+        <span class="pulse">🌸</span>
+        A magical day in the Ghibli universe
+        <span class="pulse">🌸</span>
+      </div>
+
+      <!-- Dr. title — prominent, used exactly once -->
+      <p class="hero-pre reveal d1">With infinite love, for our dearest</p>
+      <h1 class="hero-name reveal d2">
+        <strong>Dr. Sharmin Zaman Momo</strong>
+      </h1>
+
+      <!-- Main headline uses nickname -->
+      <h2 class="hero-title reveal d3">
+        Happy Birthday,<br>Dearest MoMo! 🎂
+      </h2>
+
+      <p class="hero-welcome reveal d4">
+        Welcome to MoMo's Magical Birthday World — a little corner of the universe where
+        every wish comes true, every flower blooms just for you, and every single star in
+        the sky is celebrating you today. ✨
+      </p>
+
+      <!-- Animated Birthday Candles -->
+      <div class="candles-row reveal d5" aria-label="Seven glowing birthday candles">
+
+        <!-- Candle 1 – Sage -->
+        <div class="candle-wrap">
+          <div class="flame" style="width:13px;height:21px;background:radial-gradient(ellipse at 50% 80%,#fffff0,#ffd166 42%,#f4a261 68%,transparent);box-shadow:0 0 12px 5px rgba(255,210,80,.55),0 0 26px 9px rgba(255,180,50,.28);margin-bottom:2px;"></div>
+          <div class="candle-body" style="width:18px;height:52px;background:linear-gradient(180deg,#a8d5a2,#6aaa7a);box-shadow:inset -3px 0 6px rgba(0,0,0,.1);">
+            <div class="candle-drip" style="background:#c8e6c8;height:14px;"></div>
+          </div>
+        </div>
+
+        <!-- Candle 2 – Peach -->
+        <div class="candle-wrap">
+          <div class="flame" style="width:13px;height:21px;background:radial-gradient(ellipse at 50% 80%,#fffff0,#ffd166 42%,#f4a261 68%,transparent);box-shadow:0 0 12px 5px rgba(255,210,80,.55),0 0 26px 9px rgba(255,180,50,.28);margin-bottom:2px;"></div>
+          <div class="candle-body" style="width:18px;height:64px;background:linear-gradient(180deg,#ffcba4,#e8834a);box-shadow:inset -3px 0 6px rgba(0,0,0,.1);">
+            <div class="candle-drip" style="background:#ffe8d6;height:14px;"></div>
+          </div>
+        </div>
+
+        <!-- Candle 3 – Lavender (shorter) -->
+        <div class="candle-wrap">
+          <div class="flame" style="width:13px;height:21px;background:radial-gradient(ellipse at 50% 80%,#fffff0,#ffd166 42%,#f4a261 68%,transparent);box-shadow:0 0 12px 5px rgba(255,210,80,.55),0 0 26px 9px rgba(255,180,50,.28);margin-bottom:2px;"></div>
+          <div class="candle-body" style="width:18px;height:44px;background:linear-gradient(180deg,#d4b8e0,#9060b0);box-shadow:inset -3px 0 6px rgba(0,0,0,.1);">
+            <div class="candle-drip" style="background:#ead4f5;height:14px;"></div>
+          </div>
+        </div>
+
+        <!-- Candle 4 – Lavender TALL (center) -->
+        <div class="candle-wrap">
+          <div class="flame" style="width:18px;height:28px;background:radial-gradient(ellipse at 50% 80%,#fffff5,#ffe566 38%,#ffa726 65%,transparent);box-shadow:0 0 16px 7px rgba(255,210,80,.65),0 0 32px 12px rgba(255,150,40,.3);margin-bottom:2px;"></div>
+          <div class="candle-body" style="width:22px;height:78px;background:linear-gradient(180deg,#c8b0dc,#7850a8);box-shadow:inset -4px 0 8px rgba(0,0,0,.12);">
+            <div class="candle-drip" style="background:#e0c8f0;height:16px;width:9px;"></div>
+          </div>
+        </div>
+
+        <!-- Candle 5 – Sky blue (short) -->
+        <div class="candle-wrap">
+          <div class="flame" style="width:13px;height:21px;background:radial-gradient(ellipse at 50% 80%,#fffff0,#ffd166 42%,#f4a261 68%,transparent);box-shadow:0 0 12px 5px rgba(255,210,80,.55),0 0 26px 9px rgba(255,180,50,.28);margin-bottom:2px;"></div>
+          <div class="candle-body" style="width:18px;height:44px;background:linear-gradient(180deg,#b0d4e8,#4898c8);box-shadow:inset -3px 0 6px rgba(0,0,0,.1);">
+            <div class="candle-drip" style="background:#d4eef8;height:14px;"></div>
+          </div>
+        </div>
+
+        <!-- Candle 6 – Peach tall -->
+        <div class="candle-wrap">
+          <div class="flame" style="width:13px;height:21px;background:radial-gradient(ellipse at 50% 80%,#fffff0,#ffd166 42%,#f4a261 68%,transparent);box-shadow:0 0 12px 5px rgba(255,210,80,.55),0 0 26px 9px rgba(255,180,50,.28);margin-bottom:2px;"></div>
+          <div class="candle-body" style="width:18px;height:64px;background:linear-gradient(180deg,#ffd8c0,#c06030);box-shadow:inset -3px 0 6px rgba(0,0,0,.1);">
+            <div class="candle-drip" style="background:#ffe8d6;height:14px;"></div>
+          </div>
+        </div>
+
+        <!-- Candle 7 – Pink -->
+        <div class="candle-wrap">
+          <div class="flame" style="width:13px;height:21px;background:radial-gradient(ellipse at 50% 80%,#fffff0,#ffd166 42%,#f4a261 68%,transparent);box-shadow:0 0 12px 5px rgba(255,210,80,.55),0 0 26px 9px rgba(255,180,50,.28);margin-bottom:2px;"></div>
+          <div class="candle-body" style="width:18px;height:52px;background:linear-gradient(180deg,#f9c6d0,#d04070);box-shadow:inset -3px 0 6px rgba(0,0,0,.1);">
+            <div class="candle-drip" style="background:#fde8ed;height:14px;"></div>
+          </div>
+        </div>
+
+      </div><!-- /candles-row -->
+
+      <p class="make-wish reveal d6">Close your eyes, MoMo… make a wish ✨</p>
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="scroll-cue" aria-hidden="true">
+      <span>Scroll down</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Wave transition -->
+  <div class="wave" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 70" preserveAspectRatio="none">
+      <path fill="#edf7ed" d="M0,35 C360,70 1080,0 1440,35 L1440,70 L0,70 Z"/>
+    </svg>
+  </div>
+
+  <!-- ================================================
+       SECTION 2 — WHY YOU'RE SPECIAL
+  ================================================ -->
+  <section id="about">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <span class="eyebrow">A love letter to our Apa 💚</span>
+        <h2 class="section-title">Why MoMo is the Most<br>Magical Person Alive ✨</h2>
+        <p class="section-subtitle">In a world full of ordinary days, you have always been the extraordinary one.</p>
+      </div>
+
+      <div class="about-grid">
+
+        <!-- Image side -->
+        <div class="img-frame reveal">
+          <div class="img-frame-inner">
+            <!-- INSERT GHIBLI IMAGE HERE -->
+            <img src="./momo.jpg"
+                 alt="A beautiful Ghibli-style portrait of Dr. Sharmin Zaman Momo"
+                 loading="lazy" />
+          </div>
+
+          <!-- Corner flower decorations -->
+          <svg class="corner tl" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="10" fill="#f9c6d0" opacity=".85"/>
+            <circle cx="16" cy="16" r="5"  fill="#e91e8c" opacity=".55"/>
+            <circle cx="30" cy="10" r="6"  fill="#a8d5a2" opacity=".75"/>
+            <circle cx="10" cy="30" r="6"  fill="#ffd166" opacity=".75"/>
+          </svg>
+          <svg class="corner tr" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="10" fill="#f9c6d0" opacity=".85"/>
+            <circle cx="16" cy="16" r="5"  fill="#e91e8c" opacity=".55"/>
+            <circle cx="30" cy="10" r="6"  fill="#a8d5a2" opacity=".75"/>
+            <circle cx="10" cy="30" r="6"  fill="#ffd166" opacity=".75"/>
+          </svg>
+          <svg class="corner bl" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="10" fill="#f9c6d0" opacity=".85"/>
+            <circle cx="16" cy="16" r="5"  fill="#e91e8c" opacity=".55"/>
+            <circle cx="30" cy="10" r="6"  fill="#a8d5a2" opacity=".75"/>
+            <circle cx="10" cy="30" r="6"  fill="#ffd166" opacity=".75"/>
+          </svg>
+          <svg class="corner br" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="10" fill="#f9c6d0" opacity=".85"/>
+            <circle cx="16" cy="16" r="5"  fill="#e91e8c" opacity=".55"/>
+            <circle cx="30" cy="10" r="6"  fill="#a8d5a2" opacity=".75"/>
+            <circle cx="10" cy="30" r="6"  fill="#ffd166" opacity=".75"/>
+          </svg>
+        </div>
+
+        <!-- Traits side -->
+        <div class="traits">
+
+          <div class="trait-card reveal d1">
+            <div class="trait-icon">🌿</div>
+            <h3 class="trait-title">A Heart of Pure Gold</h3>
+            <p class="trait-text">MoMo, your kindness is like morning dew — quiet, gentle, and life-giving. You have always had the extraordinary gift of making everyone around you feel seen, loved, and deeply valued. The world is a warmer place because you are in it.</p>
+          </div>
+
+          <div class="trait-card reveal d2">
+            <div class="trait-icon">🌸</div>
+            <h3 class="trait-title">The Light We All Look For</h3>
+            <p class="trait-text">You didn't just become a doctor — you became a healer of souls. Every challenge you faced only made your spirit more radiant, more resilient. You are living proof that strength and grace walk hand in hand, every single day.</p>
+          </div>
+
+          <div class="trait-card reveal d3">
+            <div class="trait-icon">⭐</div>
+            <h3 class="trait-title">Our Guiding Star</h3>
+            <p class="trait-text">Growing up with you as our Apa has been one of life's greatest gifts. You are the compass, the shelter, and the cheerleader all at once. For every late night, every sacrifice, every quiet act of love — thank you, from the very bottom of our hearts.</p>
+          </div>
+
+          <div class="trait-card reveal d4">
+            <div class="trait-icon">🎓</div>
+            <h3 class="trait-title">Brilliance Wrapped in Humility</h3>
+            <p class="trait-text">The title "Dr." before your name is the world's way of recognizing what we've always known — you are exceptional. But to us, you will always be our beloved MoMo, the best big sister anyone could ever dream of having. 💖</p>
+          </div>
+
+        </div><!-- /traits -->
+      </div><!-- /about-grid -->
+    </div><!-- /container -->
+  </section>
+
+  <!-- Wave transition -->
+  <div class="wave" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 70" preserveAspectRatio="none">
+      <path fill="#fce4ec" d="M0,0 C480,70 960,0 1440,70 L1440,70 L0,70 Z"/>
+    </svg>
+  </div>
+
+  <!-- ================================================
+       SECTION 3 — WISHES & HEARTS
+  ================================================ -->
+  <section id="wishes">
+    <div id="heartLayer" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;"></div>
+
+    <div class="container" style="position:relative;z-index:2;">
+
+      <div class="section-header reveal">
+        <span class="eyebrow">Letters from the heart 💌</span>
+        <h2 class="section-title">Birthday Wishes for<br>the One We Love Most</h2>
+        <p class="section-subtitle">Each card holds a little piece of our endless love for you, MoMo.</p>
+      </div>
+
+      <!-- Wish Cards Grid -->
+      <div class="wishes-grid">
+
+        <div class="wish-card reveal d1">
+          <span class="wish-emoji">🌺</span>
+          <p class="wish-text">"May this birthday be the beginning of the most beautiful chapter of your life. You deserve every dream, every joy, and every peaceful morning. Today, the entire universe is celebrating you."</p>
+          <p class="wish-footer"><span class="beat">♥</span> <span class="beat b2">♥</span> <span class="beat b3">♥</span> &nbsp; With all our love</p>
+        </div>
+
+        <div class="wish-card reveal d2">
+          <span class="wish-emoji">🌙</span>
+          <p class="wish-text">"MoMo, you have climbed mountains that others couldn't even see. As another year graces your life, may it bring you rest, adventure, laughter, and a love so deep it takes your breath away."</p>
+          <p class="wish-footer"><span class="beat">♥</span> <span class="beat b2">♥</span> <span class="beat b3">♥</span> &nbsp; Your admiring family</p>
+        </div>
+
+        <div class="wish-card reveal d3">
+          <span class="wish-emoji">🦋</span>
+          <p class="wish-text">"Like the most magical Studio Ghibli world, you carry wonder wherever you go. You make ordinary moments feel like fairy tales. That is the most rare and precious gift of all."</p>
+          <p class="wish-footer"><span class="beat">♥</span> <span class="beat b2">♥</span> <span class="beat b3">♥</span> &nbsp; Forever your fan</p>
+        </div>
+
+        <div class="wish-card reveal d1">
+          <span class="wish-emoji">🌟</span>
+          <p class="wish-text">"Happy Birthday, Apa. Thank you for every hug, every piece of advice, every moment you chose us. You are not just our big sister — you are our first hero, our safe place, our favourite person."</p>
+          <p class="wish-footer"><span class="beat">♥</span> <span class="beat b2">♥</span> <span class="beat b3">♥</span> &nbsp; Your little ones</p>
+        </div>
+
+        <div class="wish-card reveal d2">
+          <span class="wish-emoji">🍃</span>
+          <p class="wish-text">"May Allah bless you with peace in your heart, health in your body, and joy in your spirit. May every door you knock on swing wide open, and every road you walk be lit with stars."</p>
+          <p class="wish-footer"><span class="beat">♥</span> <span class="beat b2">♥</span> <span class="beat b3">♥</span> &nbsp; With prayers &amp; love</p>
+        </div>
+
+        <div class="wish-card reveal d3">
+          <span class="wish-emoji">🎀</span>
+          <p class="wish-text">"MoMo, you are the magic in our family's story — the chapter everyone re-reads, the character everyone loves. On this special day, know that you are cherished beyond all words, beyond all measure."</p>
+          <p class="wish-footer"><span class="beat">♥</span> <span class="beat b2">♥</span> <span class="beat b3">♥</span> &nbsp; Always &amp; forever</p>
+        </div>
+
+      </div><!-- /wishes-grid -->
+
+      <!-- Final loving message -->
+      <div class="final-msg reveal">
+        <h3 class="final-msg-title">To MoMo, with infinite love 🌸</h3>
+
+        <p class="final-msg-text">
+          No words will ever be enough to express how much you mean to us. You are the thread that
+          weaves our family together, the laughter that fills our home, the warmth that never fades.
+          On this beautiful birthday of yours, we want you to know — your happiness is our happiness.
+          Your peace is our peace. And your smile? It's our whole world.
+        </p>
+
+        <p class="final-msg-text">
+          Here's to you, <strong>Dr. Sharmin Zaman Momo</strong> — a doctor who heals,
+          a sister who loves, a human who shines. May this year be the most beautiful one yet. 🌟
+        </p>
+
+        <p class="final-sig">— With endless love, always. 💖</p>
+
+        <br />
+        <button class="celebrate-btn" onclick="launchConfetti()" aria-label="Launch celebration confetti">
+          🎉 Celebrate MoMo!
+        </button>
+      </div>
+
+    </div><!-- /container -->
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Made with 💚 and a little bit of Ghibli magic, just for <strong>Dr. Sharmin Zaman Momo</strong> 🌸</p>
+    <p style="margin-top:8px;opacity:.6;">Happy Birthday, MoMo — today and always. ✨</p>
+  </footer>
+
+  <!-- ================================================
+       JAVASCRIPT
+  ================================================ -->
+  <script>
+    /* ---- Mobile nav ---- */
+    const ham       = document.getElementById('ham');
+    const mobileNav = document.getElementById('mobileNav');
+    ham.addEventListener('click', () => {
+      ham.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+    });
+    function closeMob() {
+      ham.classList.remove('open');
+      mobileNav.classList.remove('open');
+    }
+
+    /* ---- Active nav link on scroll ---- */
+    const sections  = document.querySelectorAll('section[id]');
+    const navLinks  = document.querySelectorAll('.nav-links a');
+    function updateNav() {
+      let cur = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+      });
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+
+    /* ---- Reveal on scroll ---- */
+    const reveals = document.querySelectorAll('.reveal');
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.09, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => ro.observe(el));
+    // Immediate reveal for elements already in view
+    setTimeout(() => reveals.forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in');
+    }), 120);
+
+    /* ---- Floating Orbs ---- */
+    const orbLayer = document.getElementById('orbLayer');
+    const orbColors = [
+      'rgba(143,188,143,.42)', 'rgba(135,206,235,.42)', 'rgba(255,203,164,.42)',
+      'rgba(255,209,102,.5)',  'rgba(212,184,224,.4)',  'rgba(249,198,208,.42)'
+    ];
+    function spawnOrb() {
+      const orb = document.createElement('div');
+      orb.className = 'orb';
+      const sz  = Math.random() * 22 + 6;
+      const col = orbColors[Math.floor(Math.random() * orbColors.length)];
+      const dur = Math.random() * 9 + 7;
+      const del = Math.random() * 6;
+      orb.style.cssText = `
+        width:${sz}px; height:${sz}px;
+        background: radial-gradient(circle at 32% 32%, rgba(255,255,255,.85), ${col});
+        left:${Math.random()*100}%; bottom:-10px;
+        box-shadow: 0 0 ${sz}px ${col};
+        animation-duration:${dur}s; animation-delay:${del}s;
+        filter:blur(${Math.random()>.6?'1px':'0px'});
+      `;
+      orbLayer.appendChild(orb);
+      setTimeout(() => orb.remove(), (dur + del) * 1000 + 500);
+    }
+    for (let i = 0; i < 18; i++) setTimeout(spawnOrb, i * 350);
+    setInterval(() => { if (orbLayer.children.length < 22) spawnOrb(); }, 550);
+
+    /* ---- Sparkles ---- */
+    const sparkLayer  = document.getElementById('sparkLayer');
+    const sparkColors = ['#ffd166','#f9c6d0','#a8d5a2','#b0d4e8','#d4b8e0'];
+    for (let i = 0; i < 28; i++) {
+      const sp = document.createElement('div');
+      sp.className = 'sparkle';
+      const col = sparkColors[Math.floor(Math.random() * sparkColors.length)];
+      sp.style.cssText = `
+        left:${Math.random()*100}%; top:${Math.random()*100}%;
+        animation-delay:${Math.random()*4}s;
+        animation-duration:${Math.random()*2+1.5}s;
+        filter: drop-shadow(0 0 3px ${col});
+      `;
+      sp.style.setProperty('--c', col);
+      // colour the cross arms
+      const style = document.createElement('style');
+      style.textContent = '';
+      sp.querySelectorAll ? null : null;
+      // Use inline pseudo styles via a unique class
+      const uid = 'sp' + i;
+      sp.classList.add(uid);
+      const st = document.createElement('style');
+      st.textContent = `.${uid}::before,.${uid}::after{background:${col};}`;
+      document.head.appendChild(st);
+      sparkLayer.appendChild(sp);
+    }
+
+    /* ---- Falling Petals ---- */
+    const petalLayer  = document.getElementById('petalLayer');
+    const petalColors = ['#f9c6d0','#ffd5b8','#ffe4e1','#fce4ec','#e8f5e9','#f3e5f5'];
+    function spawnPetal() {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      const sz  = Math.random() * 10 + 7;
+      const dur = Math.random() * 9 + 7;
+      const del = Math.random() * 5;
+      p.style.cssText = `
+        width:${sz}px; height:${sz*.7}px;
+        background:${petalColors[Math.floor(Math.random()*petalColors.length)]};
+        left:${Math.random()*100}%; top:-20px;
+        animation-duration:${dur}s; animation-delay:${del}s;
+      `;
+      petalLayer.appendChild(p);
+      setTimeout(() => p.remove(), (dur + del) * 1000 + 600);
+    }
+    for (let i = 0; i < 22; i++) setTimeout(spawnPetal, i * 280);
+    setInterval(() => { if (petalLayer.children.length < 28) spawnPetal(); }, 480);
+
+    /* ---- Floating Hearts (Section 3) ---- */
+    const heartLayer  = document.getElementById('heartLayer');
+    const heartChars  = ['♥','❤','🌸','✿','♡','🌺'];
+    const heartColors = ['#e91e8c','#f9c6d0','#ff6b9d','#d81b60','#ffb3c6'];
+    function spawnHeart() {
+      const h = document.createElement('div');
+      h.className = 'floating-heart';
+      const dur = Math.random() * 9 + 7;
+      const del = Math.random() * 5;
+      h.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+      h.style.cssText = `
+        left:${Math.random()*100}%; bottom:-30px;
+        font-size:${Math.random()*14+10}px;
+        color:${heartColors[Math.floor(Math.random()*heartColors.length)]};
+        animation-duration:${dur}s; animation-delay:${del}s;
+      `;
+      heartLayer.appendChild(h);
+      setTimeout(() => h.remove(), (dur + del) * 1000 + 600);
+    }
+    // Start hearts when wishes section enters view
+    let heartsStarted = false;
+    const wishObs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !heartsStarted) {
+        heartsStarted = true;
+        for (let i = 0; i < 12; i++) setTimeout(spawnHeart, i * 180);
+        setInterval(() => { if (heartLayer.children.length < 22) spawnHeart(); }, 380);
+      }
+    }, { threshold: 0.08 });
+    wishObs.observe(document.getElementById('wishes'));
+
+    /* ---- Confetti ---- */
+    function launchConfetti() {
+      const colors = ['#f9c6d0','#a8d5a2','#b0d4e8','#ffd166','#d4b8e0','#ffcba4','#87ceeb','#ffd700'];
+      for (let i = 0; i < 120; i++) {
+        setTimeout(() => {
+          const p    = document.createElement('div');
+          p.className = 'confetti-p';
+          const dur  = Math.random() * 2 + 1.6;
+          const sz   = Math.random() * 9 + 4;
+          p.style.cssText = `
+            left:${Math.random()*100}vw; top:-10px;
+            width:${sz}px; height:${sz}px;
+            background:${colors[Math.floor(Math.random()*colors.length)]};
+            border-radius:${Math.random()>.5?'50%':'3px'};
+            animation-duration:${dur}s;
+          `;
+          document.body.appendChild(p);
+          setTimeout(() => p.remove(), dur * 1000 + 300);
+        }, i * 18);
+      }
+    }
+  </script>
+</body>
+</html>
